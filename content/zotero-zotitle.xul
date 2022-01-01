@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://zotero-zotitle/skin/overlay.css" type="text/css"?>
+<!DOCTYPE window SYSTEM "chrome://zotero-zotitle/locale/zotero-zotitle.dtd">
+
+<overlay id="zotero-zotitle-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script>
+    var globals = Function('return this')();
+    var zotero_zotitle_zoteropane = null;
+  </script>
+  <stringbundleset>
+    <stringbundle id="zotero-zotitle-strings" src="chrome://zotero-zotitle/locale/zotero-zotitle.properties"/>
+  </stringbundleset>
+	
+	<!-- Include the main extension logic -->
+  <script src="chrome://zotero/content/include.js"/>
+  <script src="chrome://zotero-zotitle/content/zotero-zotitle.js"/>
+  <script>
+    window.addEventListener('load', async function() {
+      try {
+        Zotero.debug('zotero-zotitle startup')
+        await Zotero.Zotitle.load(globals)
+        Zotero.debug('zotero-zotitle started')
+      } catch (err) {
+        Zotero.debug(`zotero-zotitle ZoteroPane overlay error: ${err.message}\n${err.stack ||''}`)
+      }
+    })
+  </script>
+</overlay>

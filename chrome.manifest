@@ -1,0 +1,5 @@
+content	zotero-zotitle				content/
+locale	zotero-zotitle	en-US		locale/en-US/
+skin	zotero-zotitle	default		skin/
+
+overlay	chrome://zotero/content/zoteroPane.xul	chrome://zotero-zotitle/content/zotero-zotitle.xul
