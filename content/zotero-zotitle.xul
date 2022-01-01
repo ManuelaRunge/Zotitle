@@ -11,8 +11,28 @@
     <stringbundle id="zotero-zotitle-strings" src="chrome://zotero-zotitle/locale/zotero-zotitle.properties"/>
   </stringbundleset>
 	
+  <!--
+  <tabs id="zotero-editpane-tabs" class="zotero-editpane-tabs">
+		<tab id="zotero-editpane-preview-tab" label="&zotero.zotitle.menuitem;"/>
+	</tabs>
+  -->	
+
+	<!-- zotfile context menus -->	
+	<menupopup id="zotero-itemmenu">
+		<menuseparator id="id-zotitle-separator"/>
+ 		<menu id="id-zotitle-manage-titlecase" label="&zotero.zotitle-manage-titlecase.label;" > 
+			<menupopup id="id-zotitle-menu">				
+				<menuitem id="id-zotitle-uppercase" label="&zotero.zotitle-uppercase.label;" oncommand="Zotero.ChangeTitleCase.changeToUpper();" />
+        <menuitem id="id-zotitle-lowercase" label="&zotero.zotitle-lowercase.label;" oncommand="Zotero.ChangeTitleCase.changeToLower();" />
+        <menuitem id="id-zotitle-titlecase" label="&zotero.zotitle-titlecase.label;" oncommand="Zotero.ChangeTitleCase.changeToTitle();" />
+        <menuitem id="id-zotitle-camelcase" label="&zotero.zotitle-camelcase.label;" oncommand="Zotero.ChangeTitleCase.changeToCamel();" />
+				<menuseparator/>					
+			</menupopup>
+		</menu>
+	</menupopup>
+
 	<!-- Include the main extension logic -->
-  <script src="chrome://zotero/content/include.js"/>
+  <script src="chrome://zotero-zotitle/content/include.js"/>
   <script src="chrome://zotero-zotitle/content/zotero-zotitle.js"/>
   <script>
     window.addEventListener('load', async function() {
