@@ -1,18 +1,15 @@
 Zotitle
 =================
 
-Install by downloading the [latest version](https://github.com/ManuelaRunge/zotero-zotitle/releases/latest)
+Plugin to change capitalization and italicization of words in item title.
 
-Plugin to change capitalization and italicization of words in item title
+Install by downloading the [latest version](https://github.com/ManuelaRunge/zotero-zotitle/releases/latest) (coming soon).
 
-# Support - read carefully
+Plugin folder structure was created using the `zotero plugin generator` at https://www.npmjs.com/package/generator-zotero-plugin.
+Plugin edits for customizing for own use were inspired from several plugins: [zotero-hello-world](https://github.com/zotero/zotero-hello-world), [ZoteroPreview](https://github.com/dcartertod/zotero-plugins/tree/main/ZoteroPreview), [zotfile](https://github.com/jlegewie/zotfile).
 
-My time is extremely limited for a number of very great reasons (you shall have to trust me on this). Because of this, I
-cannot accept bug reports
-or support requests on anything but the latest version. If you submit an issue report,
-please include the version that you are on. By the time I get to your issue, the latest version might have bumped up
-already, and you
-will have to upgrade (you might have auto-upgraded already however) and re-verify that your issue still exists.
-Apologies for the inconvenience, but such
-are the breaks.
+This is my first Zotero plugin. If you find any issues or have any comments, please submit an issue report.
 
+Planned updates: 
+- allow adding common and user-defined exceptions
+- add italicization of common and user-defined scientific terms
