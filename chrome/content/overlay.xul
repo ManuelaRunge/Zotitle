@@ -39,38 +39,4 @@
         </menu>
     </popup>
     
-    <menupopup id="menu_ToolsPopup">
-      <menuitem id="menu_Tools-zotitle-preferences" label="&zotitle-preferences-label;" oncommand="Zotero.CitationCounts.openPreferenceWindow();"/>
-      <menu id="menu_Tools-zotitle-menu" label="&zotitle-autoretrieve-label;">
-        <menupopup id="menu_Tools-zotitle-menu-popup" onpopupshowing="Zotero.CitationCounts.setCheck();">
-          <menuitem
-              id="menu_Tools-zotitle-menu-popup-upper"
-              type="checkbox"
-              label="&zotitle-autoretrieve-upper-label;"
-              oncommand="Zotero.CitationCounts.changePref('upper');"/>
-          <menuitem
-              id="menu_Tools-zotitle-menu-popup-inspire"
-              type="checkbox"
-              label="&zotitle-autoretrieve-inspire-label;"
-              oncommand="Zotero.CitationCounts.changePref('inspire');"/>
-          <menuitem
-              id="menu_Tools-zotitle-menu-popup-ads"
-              type="checkbox"
-              label="&zotitle-autoretrieve-ads-label;"
-              oncommand="Zotero.CitationCounts.changePref('ads');"/>
-          <menuitem
-              id="menu_Tools-zotitle-menu-popup-ads"
-              type="checkbox"
-              label="&zotitle-autoretrieve-semanticscholar-label;"
-              oncommand="Zotero.CitationCounts.changePref('semanticscholar');"/>
-          <menuitem
-              id="menu_Tools-zotitle-menu-popup-none"
-              type="checkbox"
-              label="&zotitle-autoretrieve-no-label;"
-              oncommand="Zotero.CitationCounts.changePref('none');"/>
-        </menupopup>
-      </menu>
-    </menupopup>
-
-
 </overlay>

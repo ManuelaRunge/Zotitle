@@ -258,24 +258,6 @@ Zotero.CitationCounts.setCheck = function() {
     tools_none.setAttribute("checked", Boolean(pref === "none"));
 };
 
-// *********** Change the checkbox, topref
-Zotero.CitationCounts.changePref = function changePref(option) {
-    setPref("autoretrieve", option);
-};
-
-/**
- * Open zotitle preference window
- */
-Zotero.CitationCounts.openPreferenceWindow = function(paneID, action) {
-    const io = {pane: paneID, action: action};
-    window.openDialog(
-        'chrome://zotitle/content/options.xul',
-        'zotitle-pref',
-        // TODO: This looks wrong; it's always "dialog=no"?
-        'chrome,titlebar,toolbar,centerscreen' + Zotero.Prefs.get('browser.preferences.instantApply', true) ? 'dialog=no' : 'modal',
-        io
-    );
-};
 
 Zotero.CitationCounts.resetState = function(operation) {
     if (operation == "initial") {
