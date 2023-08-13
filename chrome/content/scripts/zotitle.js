@@ -2,7 +2,7 @@
 if (typeof Zotero === 'undefined') {
     Zotero = {};
 }
-Zotero.CitationCounts = {};
+Zotero.ChangeTitleCase = {};
 
 // Definitions
 
@@ -214,12 +214,12 @@ function setPref(pref, value) {
 
 // Startup - initialize plugin
 
-Zotero.CitationCounts.init = function() {
-    Zotero.CitationCounts.resetState("initial");
+Zotero.ChangeTitleCase.init = function() {
+    Zotero.ChangeTitleCase.resetState("initial");
 
     // Register the callback in Zotero as an item observer
     const notifierID = Zotero.Notifier.registerObserver(
-        Zotero.CitationCounts.notifierCallback, ['item']);
+        Zotero.ChangeTitleCase.notifierCallback, ['item']);
 
     // Unregister callback when the window closes (important to avoid
     // a memory leak)
@@ -228,27 +228,27 @@ Zotero.CitationCounts.init = function() {
     }, false);
 };
 
-Zotero.CitationCounts.notifierCallback = {
+Zotero.ChangeTitleCase.notifierCallback = {
     notify: function(event, type, ids, extraData) {
         if (event == 'add') {
             const operation = getPref("autoretrieve");
-            Zotero.CitationCounts.updateItems(Zotero.Items.get(ids), operation);
+            Zotero.ChangeTitleCase.updateItems(Zotero.Items.get(ids), operation);
         }
     }
 };
 
 
 
-Zotero.CitationCounts.resetState = function(operation) {
+Zotero.ChangeTitleCase.resetState = function(operation) {
     if (operation == "initial") {
-        if (Zotero.CitationCounts.progressWindow) {
-            Zotero.CitationCounts.progressWindow.close();
+        if (Zotero.ChangeTitleCase.progressWindow) {
+            Zotero.ChangeTitleCase.progressWindow.close();
         }
-        Zotero.CitationCounts.current = -1;
-        Zotero.CitationCounts.toUpdate = 0;
-        Zotero.CitationCounts.itemsToUpdate = null;
-        Zotero.CitationCounts.numberOfUpdatedItems = 0;
-        Zotero.CitationCounts.counter = 0;
+        Zotero.ChangeTitleCase.current = -1;
+        Zotero.ChangeTitleCase.toUpdate = 0;
+        Zotero.ChangeTitleCase.itemsToUpdate = null;
+        Zotero.ChangeTitleCase.numberOfUpdatedItems = 0;
+        Zotero.ChangeTitleCase.counter = 0;
         error_invalid = null;
         error_nozotitle = null;
         error_multiple = null;
@@ -260,7 +260,7 @@ Zotero.CitationCounts.resetState = function(operation) {
     } 
 
     if (error_invalid || error_nozotitle || error_multiple) {
-        Zotero.CitationCounts.progressWindow.close();
+        Zotero.ChangeTitleCase.progressWindow.close();
         const icon = "chrome://zotero/skin/cross.png";
         if (error_invalid && !error_invalid_shown) {
             var progressWindowInvalid = new Zotero.ProgressWindow({closeOnClick:true});
@@ -305,87 +305,87 @@ Zotero.CitationCounts.resetState = function(operation) {
     }
     if (!final_count_shown) {
         const icon = "chrome://zotero/skin/tick.png";
-        Zotero.CitationCounts.progressWindow = new Zotero.ProgressWindow({closeOnClick:true});
-        Zotero.CitationCounts.progressWindow.changeHeadline("Finished");
-        Zotero.CitationCounts.progressWindow.progress = new Zotero.CitationCounts.progressWindow.ItemProgress(icon);
-        Zotero.CitationCounts.progressWindow.progress.setProgress(100);
-        Zotero.CitationCounts.progressWindow.progress.setText(
+        Zotero.ChangeTitleCase.progressWindow = new Zotero.ProgressWindow({closeOnClick:true});
+        Zotero.ChangeTitleCase.progressWindow.changeHeadline("Finished");
+        Zotero.ChangeTitleCase.progressWindow.progress = new Zotero.ChangeTitleCase.progressWindow.ItemProgress(icon);
+        Zotero.ChangeTitleCase.progressWindow.progress.setProgress(100);
+        Zotero.ChangeTitleCase.progressWindow.progress.setText(
             operationNames[operation] + " citation counts updated for " +
-                Zotero.CitationCounts.counter + " items.");
-        Zotero.CitationCounts.progressWindow.show();
-        Zotero.CitationCounts.progressWindow.startCloseTimer(4000);
+                Zotero.ChangeTitleCase.counter + " items.");
+        Zotero.ChangeTitleCase.progressWindow.show();
+        Zotero.ChangeTitleCase.progressWindow.startCloseTimer(4000);
         final_count_shown = true;
     }
 };
 
-Zotero.CitationCounts.updateSelectedItems = function(operation) {
-    Zotero.CitationCounts.updateItems(ZoteroPane.getSelectedItems(), operation);
+Zotero.ChangeTitleCase.updateSelectedItems = function(operation) {
+    Zotero.ChangeTitleCase.updateItems(ZoteroPane.getSelectedItems(), operation);
 };
 
-Zotero.CitationCounts.updateItems = function(items0, operation) {
+Zotero.ChangeTitleCase.updateItems = function(items0, operation) {
     const items = items0.filter(item => !item.isFeedItem);
 
     if (items.length === 0 ||
-        Zotero.CitationCounts.numberOfUpdatedItems <
-        Zotero.CitationCounts.toUpdate) {
+        Zotero.ChangeTitleCase.numberOfUpdatedItems <
+        Zotero.ChangeTitleCase.toUpdate) {
         return;
     }
 
-    Zotero.CitationCounts.resetState("initial");
-    Zotero.CitationCounts.toUpdate = items.length;
-    Zotero.CitationCounts.itemsToUpdate = items;
+    Zotero.ChangeTitleCase.resetState("initial");
+    Zotero.ChangeTitleCase.toUpdate = items.length;
+    Zotero.ChangeTitleCase.itemsToUpdate = items;
 
     // Progress Windows
-    Zotero.CitationCounts.progressWindow =
+    Zotero.ChangeTitleCase.progressWindow =
         new Zotero.ProgressWindow({closeOnClick: false});
     const icon = 'chrome://zotero/skin/toolbar-advanced-search' +
           (Zotero.hiDPI ? "@2x" : "") + '.png';
-    Zotero.CitationCounts.progressWindow.changeHeadline(
+    Zotero.ChangeTitleCase.progressWindow.changeHeadline(
         "Getting " + operationNames[operation] + " citation counts", icon);
     const doiIcon =
           'chrome://zotitle/skin/doi' +
           (Zotero.hiDPI ? "@2x" : "") + '.png';
-    Zotero.CitationCounts.progressWindow.progress =
-        new Zotero.CitationCounts.progressWindow.ItemProgress(
+    Zotero.ChangeTitleCase.progressWindow.progress =
+        new Zotero.ChangeTitleCase.progressWindow.ItemProgress(
             doiIcon, "Retrieving citation counts.");
-    Zotero.CitationCounts.updateNextItem(operation);
+    Zotero.ChangeTitleCase.updateNextItem(operation);
 };
 
-Zotero.CitationCounts.updateNextItem = function(operation) {
-    Zotero.CitationCounts.numberOfUpdatedItems++;
+Zotero.ChangeTitleCase.updateNextItem = function(operation) {
+    Zotero.ChangeTitleCase.numberOfUpdatedItems++;
 
-    if (Zotero.CitationCounts.current == Zotero.CitationCounts.toUpdate - 1) {
-        Zotero.CitationCounts.progressWindow.close();
-        Zotero.CitationCounts.resetState(operation);
+    if (Zotero.ChangeTitleCase.current == Zotero.ChangeTitleCase.toUpdate - 1) {
+        Zotero.ChangeTitleCase.progressWindow.close();
+        Zotero.ChangeTitleCase.resetState(operation);
         return;
     }
 
-    Zotero.CitationCounts.current++;
+    Zotero.ChangeTitleCase.current++;
 
     // Progress Windows
-    const percent = Math.round(Zotero.CitationCounts.numberOfUpdatedItems /
-                               Zotero.CitationCounts.toUpdate * 100);
-    Zotero.CitationCounts.progressWindow.progress.setProgress(percent);
-    Zotero.CitationCounts.progressWindow.progress.setText(
-        "Item "+Zotero.CitationCounts.current+" of "+
-            Zotero.CitationCounts.toUpdate);
-    Zotero.CitationCounts.progressWindow.show();
+    const percent = Math.round(Zotero.ChangeTitleCase.numberOfUpdatedItems /
+                               Zotero.ChangeTitleCase.toUpdate * 100);
+    Zotero.ChangeTitleCase.progressWindow.progress.setProgress(percent);
+    Zotero.ChangeTitleCase.progressWindow.progress.setText(
+        "Item "+Zotero.ChangeTitleCase.current+" of "+
+            Zotero.ChangeTitleCase.toUpdate);
+    Zotero.ChangeTitleCase.progressWindow.show();
 
-    Zotero.CitationCounts.updateItem(
-        Zotero.CitationCounts.itemsToUpdate[Zotero.CitationCounts.current],
+    Zotero.ChangeTitleCase.updateItem(
+        Zotero.ChangeTitleCase.itemsToUpdate[Zotero.ChangeTitleCase.current],
         operation);
 };
 
-Zotero.CitationCounts.updateItem = async function(item, operation) {
+Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
     if (operation == "upper") {
 
         const count = await getCrossrefCount(item);
         if (count >= 0) {
             setCitationCount(item, 'changeToUpper', count);
             item.saveTx();
-            Zotero.CitationCounts.counter++;
+            Zotero.ChangeTitleCase.counter++;
         }
-        Zotero.CitationCounts.updateNextItem(operation);
+        Zotero.ChangeTitleCase.updateNextItem(operation);
 
     } else if (operation == "inspire") {
 
@@ -399,9 +399,9 @@ Zotero.CitationCounts.updateItem = async function(item, operation) {
                 setCitationCount(item, 'Inspire/arXiv', count_arxiv);
             }
             item.saveTx();
-            Zotero.CitationCounts.counter++;
+            Zotero.ChangeTitleCase.counter++;
         }
-        Zotero.CitationCounts.updateNextItem(operation);
+        Zotero.ChangeTitleCase.updateNextItem(operation);
 
     } else if (operation == "semanticscholar") {
 
@@ -415,17 +415,17 @@ Zotero.CitationCounts.updateItem = async function(item, operation) {
                 setCitationCount(item, 'Semantic Scholar/arXiv', count_arxiv);
             }
             item.saveTx();
-            Zotero.CitationCounts.counter++;
+            Zotero.ChangeTitleCase.counter++;
         }
-        Zotero.CitationCounts.updateNextItem(operation);
+        Zotero.ChangeTitleCase.updateNextItem(operation);
 
     } else {
-        Zotero.CitationCounts.updateNextItem(operation);
+        Zotero.ChangeTitleCase.updateNextItem(operation);
     }
 };
 
 if (typeof window !== 'undefined') {
     window.addEventListener('load', function(e) {
-        Zotero.CitationCounts.init();
+        Zotero.ChangeTitleCase.init();
     }, false);
 }

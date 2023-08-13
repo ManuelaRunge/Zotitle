@@ -22,19 +22,19 @@
                 <menuitem
                     id="zotero-itemmenu-zotitle-upper"
                     label="&zotitle-menu-upper-label;"
-                    oncommand="Zotero.CitationCounts.updateSelectedItems('upper')"/>
+                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('upper')"/>
                 <menuitem
                     id="zotero-itemmenu-zotitle-inspire"
                     label="&zotitle-menu-inspire-label;"
-                    oncommand="Zotero.CitationCounts.updateSelectedItems('inspire')"/>
+                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('inspire')"/>
                 <menuitem
                     id="zotero-itemmenu-zotitle-ads"
                     label="&zotitle-menu-ads-label;"
-                    oncommand="Zotero.CitationCounts.updateSelectedItems('ads')"/>
+                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('ads')"/>
                 <menuitem
                     id="zotero-itemmenu-zotitle-semanticscholar"
                     label="&zotitle-menu-semanticscholar-label;"
-                    oncommand="Zotero.CitationCounts.updateSelectedItems('semanticscholar')"/>
+                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('semanticscholar')"/>
             </menupopup>
         </menu>
     </popup>
