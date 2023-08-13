@@ -237,26 +237,6 @@ Zotero.CitationCounts.notifierCallback = {
     }
 };
 
-// Controls for Tools menu
-
-// *********** Set the checkbox checks, from pref
-Zotero.CitationCounts.setCheck = function() {
-    let tools_crossref = document.getElementById(
-        "menu_Tools-zotitle-menu-popup-crossref");
-    let tools_inspire = document.getElementById(
-        "menu_Tools-zotitle-menu-popup-inspire");
-    let tools_ads = document.getElementById(
-        "menu_Tools-zotitle-menu-popup-ads");
-    let tools_none = document.getElementById(
-        "menu_Tools-zotitle-menu-popup-none");
-    const pref = getPref("autoretrieve");
-    tools_crossref.setAttribute("checked", Boolean(pref === "crossref"));
-    tools_inspire.setAttribute("checked", Boolean(pref === "inspire"));
-    tools_ads.setAttribute("checked", Boolean(pref === "ads"));
-    tools_semanticscholar.setAttribute(
-        "checked", Boolean(pref === "semanticscholar"));
-    tools_none.setAttribute("checked", Boolean(pref === "none"));
-};
 
 
 Zotero.CitationCounts.resetState = function(operation) {
