@@ -271,7 +271,7 @@ Zotero.CitationCounts.changePref = function changePref(option) {
 Zotero.CitationCounts.openPreferenceWindow = function(paneID, action) {
     const io = {pane: paneID, action: action};
     window.openDialog(
-        'chrome://zoterocitationcounts/content/options.xul',
+        'chrome://zotitle/content/options.xul',
         'citationcounts-pref',
         // TODO: This looks wrong; it's always "dialog=no"?
         'chrome,titlebar,toolbar,centerscreen' + Zotero.Prefs.get('browser.preferences.instantApply', true) ? 'dialog=no' : 'modal',
@@ -383,7 +383,7 @@ Zotero.CitationCounts.updateItems = function(items0, operation) {
     Zotero.CitationCounts.progressWindow.changeHeadline(
         "Getting " + operationNames[operation] + " citation counts", icon);
     const doiIcon =
-          'chrome://zoterocitationcounts/skin/doi' +
+          'chrome://zotitle/skin/doi' +
           (Zotero.hiDPI ? "@2x" : "") + '.png';
     Zotero.CitationCounts.progressWindow.progress =
         new Zotero.CitationCounts.progressWindow.ItemProgress(

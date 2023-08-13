@@ -2,7 +2,7 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <?xml-stylesheet href="chrome://zotero-platform/content/preferences.css"?>
 
-<!DOCTYPE window SYSTEM "chrome://zoterocitationcounts/locale/options.dtd">
+<!DOCTYPE window SYSTEM "chrome://zotitle/locale/options.dtd">
 
 <!-- onload="updatePreferenceWindow('all');" -->
 <prefwindow id="citationcounts-pref" title="&citationcounts-preferences;" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">

@@ -1,23 +1,23 @@
 <?xml version="1.0"?>
 
-<!DOCTYPE overlay SYSTEM "chrome://zoterocitationcounts/locale/overlay.dtd">
+<!DOCTYPE overlay SYSTEM "chrome://zotitle/locale/overlay.dtd">
 
 <overlay
-    id="zoterocitationcounts"
+    id="zotitle"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-    <script src="chrome://zoterocitationcounts/content/scripts/zoterocitationcounts.js"/>
+    <script src="chrome://zotitle/content/scripts/zotitle.js"/>
     <script src="chrome://zotero/content/include.js"/>
 
     <stringbundleset id="stringbundleset">
         <stringbundle
             id="citationcounts-bundle"
-            src="chrome://zoterocitationcounts/locale/zoterocitationcounts.properties"/>
+            src="chrome://zotitle/locale/zotitle.properties"/>
     </stringbundleset>
 
     <popup
         id="zotero-itemmenu">
-        <menu class="menu-iconic" image="chrome://zoterocitationcounts/skin/doi@2x.png" id="zotero-itemmenu-citationcounts-menu" label="&citationcounts-menu-label;">
+        <menu class="menu-iconic"  id="zotero-itemmenu-citationcounts-menu" label="&citationcounts-menu-label;">
             <menupopup id="zotero-itemmenu-citationcounts-menupopup">
                 <menuitem
                     id="zotero-itemmenu-citationcounts-crossref"
