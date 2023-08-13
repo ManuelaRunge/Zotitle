@@ -365,47 +365,35 @@ Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
 
         const count = await getCrossrefCount(item);
         if (count >= 0) {
-            setCitationCount(item, 'changeToUpper', count);
+            setCitationCount(item, 'changeToUpper');
             item.saveTx();
             Zotero.ChangeTitleCase.counter++;
         }
         Zotero.ChangeTitleCase.updateNextItem(operation);
 
-    } else if (operation == "inspire") {
+    } 
+	if (operation == "inspire") {
 
-        const count_doi = await getInspireCount(item, 'doi');
-        const count_arxiv = await getInspireCount(item, 'arxiv');
-        if (count_doi >= 0 || count_arxiv >= 0) {
-            if (count_doi >= 0) {
-                setCitationCount(item, 'Inspire/DOI', count_doi);
-            }
-            if (count_arxiv >= 0) {
-                setCitationCount(item, 'Inspire/arXiv', count_arxiv);
-            }
+        const count = await getCrossrefCount(item);
+        if (count >= 0) {
+            setCitationCount(item, 'changeToUpper');
             item.saveTx();
             Zotero.ChangeTitleCase.counter++;
         }
         Zotero.ChangeTitleCase.updateNextItem(operation);
 
-    } else if (operation == "semanticscholar") {
+    } 
+	if (operation == "semanticscholar") {
 
-        const count_doi = await getSemanticScholarCount(item, 'doi');
-        const count_arxiv = await getSemanticScholarCount(item, 'arxiv');
-        if (count_doi >= 0 || count_arxiv >= 0) {
-            if (count_doi >= 0) {
-                setCitationCount(item, 'Semantic Scholar/DOI', count_doi);
-            }
-            if (count_arxiv >= 0) {
-                setCitationCount(item, 'Semantic Scholar/arXiv', count_arxiv);
-            }
+        const count = await getCrossrefCount(item);
+        if (count >= 0) {
+            setCitationCount(item, 'changeToUpper');
             item.saveTx();
             Zotero.ChangeTitleCase.counter++;
         }
         Zotero.ChangeTitleCase.updateNextItem(operation);
 
-    } else {
-        Zotero.ChangeTitleCase.updateNextItem(operation);
-    }
+    } 
 };
 
 if (typeof window !== 'undefined') {
