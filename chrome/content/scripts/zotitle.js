@@ -56,6 +56,9 @@ function setCitationCount(item, tag, count) {
     extras.unshift("" + count + " citations (" + tag + ") [" + date + "]");
     extra = extras.join("\n");
     item.setField('extra', extra);
+	
+	let title = item.getField('title');
+	item.setField('title', title.toUpperCase());
 }
 
 async function getCrossrefCount(item) {
