@@ -1,19 +1,20 @@
-<!ENTITY zotero.zotitle.crossref.label "Get Crossref citation count">
-<!ENTITY zotero.zotitle.inspire.label "Get Inspire HEP citation count">
-<!ENTITY zotero.zotitle.ads.label "Get NASA/ADS citation count">
-<!ENTITY zotero.zotitle.semanticscholar.label "Get Semantic Scholar citation count">
-<!ENTITY zotero.zotitle.menu.label "Manage Citation Counts">
-<!ENTITY zotero.zotitle.toolsmenu.label "Get citation counts for new items">
+<!ENTITY zotitle.toolsmenu.label "Change title case for selected items">
+<!ENTITY zotitle.crossref.label "UPPERCASE">
+<!ENTITY zotitle.inspire.label "lowercase">
+<!ENTITY zotitle.ads.label "Sentence case">
+<!ENTITY zotitle.semanticscholar.label "Camel Case">
+<!ENTITY zotitle.menu.label "Item Title Manager">
 
-<!ENTITY citationcounts-preferences-label "Citation Counts Manager Preferences…">
-<!ENTITY citationcounts-autoretrieve-label "Get citation counts for new items">
-<!ENTITY citationcounts-autoretrieve-crossref-label "Crossref">
-<!ENTITY citationcounts-autoretrieve-inspire-label "Inspire HEP">
-<!ENTITY citationcounts-autoretrieve-ads-label "NASA/ADS">
-<!ENTITY citationcounts-autoretrieve-semanticscholar-label "Semantic Scholar">
-<!ENTITY citationcounts-autoretrieve-no-label "No">
-<!ENTITY citationcounts-menu-label "Manage Citation Counts">
-<!ENTITY citationcounts-menu-crossref-label "Get Crossref citation count">
-<!ENTITY citationcounts-menu-inspire-label "Get Inspire HEP citation count">
-<!ENTITY citationcounts-menu-ads-label "Get NASA/ADS citation count">
-<!ENTITY citationcounts-menu-semanticscholar-label "Get Semantic Scholar citation count">
+<!ENTITY zotitle-preferences-label "Item Title Modifier Preferences…">
+<!ENTITY zotitle-autoretrieve-label "Change title case for selected items">
+<!ENTITY zotitle-autoretrieve-crossref-label "Crossref">
+<!ENTITY zotitle-autoretrieve-inspire-label "Inspire HEP">
+<!ENTITY zotitle-autoretrieve-ads-label "NASA/ADS">
+<!ENTITY zotitle-autoretrieve-semanticscholar-label "Camel Case">
+<!ENTITY zotitle-autoretrieve-no-label "No">
+
+<!ENTITY zotitle-menu-label "Item Title Manager">
+<!ENTITY zotitle-menu-crossref-label "UPPERCASE">
+<!ENTITY zotitle-menu-inspire-label "lowercase">
+<!ENTITY zotitle-menu-ads-label "Sentence case">
+<!ENTITY zotitle-menu-semanticscholar-label "Camel Case">

@@ -5,21 +5,21 @@
 <!DOCTYPE window SYSTEM "chrome://zotitle/locale/options.dtd">
 
 <!-- onload="updatePreferenceWindow('all');" -->
-<prefwindow id="citationcounts-pref" title="&citationcounts-preferences;" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<prefwindow id="zotitle-pref" title="&zotitle-preferences;" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 	<stringbundleset id="stringbundleset">
-		<stringbundle id="citationcounts-options" src="chrome://zotero-citationcounts/locale/options.properties"/>
+		<stringbundle id="zotitle-options" src="chrome://zotitle/locale/options.properties"/>
 	</stringbundleset>
-  <prefpane label="&citationcounts-preferences;" id="citationcounts-prefpane">
+  <prefpane label="&zotitle-preferences;" id="zotitle-prefpane">
     <preferences>
-      <preference id="pref-citationcounts-autoretrieve" name="extensions.citationcounts.autoretrieve" type="string"/>
-      <preference id="pref-citationcounts-tag-invalid" name="extensions.citationcounts.tag_invalid" type="string"/>
-      <preference id="pref-citationcounts-tag-multiple" name="extensions.citationcounts.tag_multiple" type="string"/>
-      <preference id="pref-citationcounts-tag-nocitationcounts" name="extensions.citationcounts.tag_nocitationcounts" type="string"/>
+      <preference id="pref-zotitle-autoretrieve" name="extensions.zotitle.autoretrieve" type="string"/>
+      <preference id="pref-zotitle-tag-invalid" name="extensions.zotitle.tag_invalid" type="string"/>
+      <preference id="pref-zotitle-tag-multiple" name="extensions.zotitle.tag_multiple" type="string"/>
+      <preference id="pref-zotitle-tag-nozotitle" name="extensions.zotitle.tag_nozotitle" type="string"/>
     </preferences>
       
     <groupbox>
       <caption label="&autoretrieve-label;"/>
-      <radiogroup id="id-citationcounts-autoretrieve" preference="pref-citationcounts-autoretrieve">
+      <radiogroup id="id-zotitle-autoretrieve" preference="pref-zotitle-autoretrieve">
         <radio label="&autoretrieve-crossref-label;" value='crossref'/>
         <radio label="&autoretrieve-inspire-label;" value='inspire'/>
         <radio label="&autoretrieve-ads-label;" value='ads'/>
@@ -33,14 +33,14 @@
       <caption label="&notfound-tag-label;"/>
       <description style="width: 420px">&notfound-tag-desc;</description>
       <separator class="thin"/>
-      <label control="id-citationcounts-tag-invalid" value="&tag-invalid-label;"/>
-      <textbox id="id-citationcounts-tag-invalid" preference="pref-citationcounts-tag-invalid" flex="1"/>
+      <label control="id-zotitle-tag-invalid" value="&tag-invalid-label;"/>
+      <textbox id="id-zotitle-tag-invalid" preference="pref-zotitle-tag-invalid" flex="1"/>
       <separator class="thin"/>
-      <label control="id-citationcounts-tag-multiple" value="&tag-multiple-label;"/>
-      <textbox id="id-citationcounts-tag-multiple" preference="pref-citationcounts-tag-multiple" flex="1"/>
+      <label control="id-zotitle-tag-multiple" value="&tag-multiple-label;"/>
+      <textbox id="id-zotitle-tag-multiple" preference="pref-zotitle-tag-multiple" flex="1"/>
       <separator class="thin"/>
-      <label control="id-citationcounts-tag-nocitationcounts" value="&tag-nocitationcounts-label;"/>
-      <textbox id="id-citationcounts-tag-nocitationcounts" preference="pref-citationcounts-tag-nocitationcounts" flex="1"/>
+      <label control="id-zotitle-tag-nozotitle" value="&tag-nozotitle-label;"/>
+      <textbox id="id-zotitle-tag-nozotitle" preference="pref-zotitle-tag-nozotitle" flex="1"/>
     </groupbox>
   </prefpane>
 

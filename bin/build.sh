@@ -1,9 +1,9 @@
 #!/bin/sh
 
-version='1.3.0'
+version='1.0.0'
 
-rm -f zotero-citationcounts-${version}.xpi
-zip -r zotero-citationcounts-${version}.xpi chrome/* defaults/* chrome.manifest install.rdf
+rm -f zotitle-${version}.xpi
+zip -r zotitle-${version}.xpi chrome/* defaults/* chrome.manifest install.rdf
 
 # To release a new version:
 # - increase version number in all files (not just here)

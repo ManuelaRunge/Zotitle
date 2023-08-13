@@ -11,62 +11,62 @@
 
     <stringbundleset id="stringbundleset">
         <stringbundle
-            id="citationcounts-bundle"
+            id="zotitle-bundle"
             src="chrome://zotitle/locale/zotitle.properties"/>
     </stringbundleset>
 
     <popup
         id="zotero-itemmenu">
-        <menu class="menu-iconic"  id="zotero-itemmenu-citationcounts-menu" label="&citationcounts-menu-label;">
-            <menupopup id="zotero-itemmenu-citationcounts-menupopup">
+        <menu class="menu-iconic" id="zotero-itemmenu-zotitle-menu" label="&zotitle-menu-label;">
+            <menupopup id="zotero-itemmenu-zotitle-menupopup">
                 <menuitem
-                    id="zotero-itemmenu-citationcounts-crossref"
-                    label="&citationcounts-menu-crossref-label;"
+                    id="zotero-itemmenu-zotitle-crossref"
+                    label="&zotitle-menu-crossref-label;"
                     oncommand="Zotero.CitationCounts.updateSelectedItems('crossref')"/>
                 <menuitem
-                    id="zotero-itemmenu-citationcounts-inspire"
-                    label="&citationcounts-menu-inspire-label;"
+                    id="zotero-itemmenu-zotitle-inspire"
+                    label="&zotitle-menu-inspire-label;"
                     oncommand="Zotero.CitationCounts.updateSelectedItems('inspire')"/>
                 <menuitem
-                    id="zotero-itemmenu-citationcounts-ads"
-                    label="&citationcounts-menu-ads-label;"
+                    id="zotero-itemmenu-zotitle-ads"
+                    label="&zotitle-menu-ads-label;"
                     oncommand="Zotero.CitationCounts.updateSelectedItems('ads')"/>
                 <menuitem
-                    id="zotero-itemmenu-citationcounts-semanticscholar"
-                    label="&citationcounts-menu-semanticscholar-label;"
+                    id="zotero-itemmenu-zotitle-semanticscholar"
+                    label="&zotitle-menu-semanticscholar-label;"
                     oncommand="Zotero.CitationCounts.updateSelectedItems('semanticscholar')"/>
             </menupopup>
         </menu>
     </popup>
     
     <menupopup id="menu_ToolsPopup">
-      <menuitem id="menu_Tools-citationcounts-preferences" label="&citationcounts-preferences-label;" oncommand="Zotero.CitationCounts.openPreferenceWindow();"/>
-      <menu id="menu_Tools-citationcounts-menu" label="&citationcounts-autoretrieve-label;">
-        <menupopup id="menu_Tools-citationcounts-menu-popup" onpopupshowing="Zotero.CitationCounts.setCheck();">
+      <menuitem id="menu_Tools-zotitle-preferences" label="&zotitle-preferences-label;" oncommand="Zotero.CitationCounts.openPreferenceWindow();"/>
+      <menu id="menu_Tools-zotitle-menu" label="&zotitle-autoretrieve-label;">
+        <menupopup id="menu_Tools-zotitle-menu-popup" onpopupshowing="Zotero.CitationCounts.setCheck();">
           <menuitem
-              id="menu_Tools-citationcounts-menu-popup-crossref"
+              id="menu_Tools-zotitle-menu-popup-crossref"
               type="checkbox"
-              label="&citationcounts-autoretrieve-crossref-label;"
+              label="&zotitle-autoretrieve-crossref-label;"
               oncommand="Zotero.CitationCounts.changePref('crossref');"/>
           <menuitem
-              id="menu_Tools-citationcounts-menu-popup-inspire"
+              id="menu_Tools-zotitle-menu-popup-inspire"
               type="checkbox"
-              label="&citationcounts-autoretrieve-inspire-label;"
+              label="&zotitle-autoretrieve-inspire-label;"
               oncommand="Zotero.CitationCounts.changePref('inspire');"/>
           <menuitem
-              id="menu_Tools-citationcounts-menu-popup-ads"
+              id="menu_Tools-zotitle-menu-popup-ads"
               type="checkbox"
-              label="&citationcounts-autoretrieve-ads-label;"
-              oncommand="Zotero.CitationCounts.changePref('ads);"/>
+              label="&zotitle-autoretrieve-ads-label;"
+              oncommand="Zotero.CitationCounts.changePref('ads');"/>
           <menuitem
-              id="menu_Tools-citationcounts-menu-popup-semanticscholar"
+              id="menu_Tools-zotitle-menu-popup-ads"
               type="checkbox"
-              label="&citationcounts-autoretrieve-semanticscholar-label;"
+              label="&zotitle-autoretrieve-semanticscholar-label;"
               oncommand="Zotero.CitationCounts.changePref('semanticscholar');"/>
           <menuitem
-              id="menu_Tools-citationcounts-menu-popup-none"
+              id="menu_Tools-zotitle-menu-popup-none"
               type="checkbox"
-              label="&citationcounts-autoretrieve-no-label;"
+              label="&zotitle-autoretrieve-no-label;"
               oncommand="Zotero.CitationCounts.changePref('none');"/>
         </menupopup>
       </menu>
