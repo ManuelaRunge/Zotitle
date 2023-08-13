@@ -242,15 +242,13 @@ Zotero.CitationCounts.notifierCallback = {
 // *********** Set the checkbox checks, from pref
 Zotero.CitationCounts.setCheck = function() {
     let tools_crossref = document.getElementById(
-        "menu_Tools-citationcounts-menu-popup-crossref");
+        "menu_Tools-zotitle-menu-popup-crossref");
     let tools_inspire = document.getElementById(
-        "menu_Tools-citationcounts-menu-popup-inspire");
+        "menu_Tools-zotitle-menu-popup-inspire");
     let tools_ads = document.getElementById(
-        "menu_Tools-citationcounts-menu-popup-ads");
-    let tools_semanticscholar = document.getElementById(
-        "menu_Tools-citationcounts-menu-popup-semanticscholar");
+        "menu_Tools-zotitle-menu-popup-ads");
     let tools_none = document.getElementById(
-        "menu_Tools-citationcounts-menu-popup-none");
+        "menu_Tools-zotitle-menu-popup-none");
     const pref = getPref("autoretrieve");
     tools_crossref.setAttribute("checked", Boolean(pref === "crossref"));
     tools_inspire.setAttribute("checked", Boolean(pref === "inspire"));
@@ -266,13 +264,13 @@ Zotero.CitationCounts.changePref = function changePref(option) {
 };
 
 /**
- * Open citationcounts preference window
+ * Open zotitle preference window
  */
 Zotero.CitationCounts.openPreferenceWindow = function(paneID, action) {
     const io = {pane: paneID, action: action};
     window.openDialog(
         'chrome://zotitle/content/options.xul',
-        'citationcounts-pref',
+        'zotitle-pref',
         // TODO: This looks wrong; it's always "dialog=no"?
         'chrome,titlebar,toolbar,centerscreen' + Zotero.Prefs.get('browser.preferences.instantApply', true) ? 'dialog=no' : 'modal',
         io
@@ -290,16 +288,16 @@ Zotero.CitationCounts.resetState = function(operation) {
         Zotero.CitationCounts.numberOfUpdatedItems = 0;
         Zotero.CitationCounts.counter = 0;
         error_invalid = null;
-        error_nocitationcounts = null;
+        error_nozotitle = null;
         error_multiple = null;
         error_invalid_shown = false;
-        error_nocitationcounts_shown = false;
+        error_nozotitle_shown = false;
         error_multiple_shown = false;
         final_count_shown = false;
         return;
     } 
 
-    if (error_invalid || error_nocitationcounts || error_multiple) {
+    if (error_invalid || error_nozotitle || error_multiple) {
         Zotero.CitationCounts.progressWindow.close();
         const icon = "chrome://zotero/skin/cross.png";
         if (error_invalid && !error_invalid_shown) {
@@ -315,18 +313,18 @@ Zotero.CitationCounts.resetState = function(operation) {
             progressWindowInvalid.startCloseTimer(8000);
             error_invalid_shown = true;
         }
-        if (error_nocitationcounts && !error_nocitationcounts_shown) {
-            var progressWindowNocitationcounts = new Zotero.ProgressWindow({closeOnClick:true});
-            progressWindowNocitationcounts.changeHeadline("Citation count not found");
-            if (getPref("tag_nocitationcounts") !== "") {
-                progressWindowNocitationcounts.progress = new progressWindowNocitationcounts.ItemProgress(icon, "No citation count was found for some items. These have been tagged with '" + getPref("tag_nocitationcounts") + "'.");
+        if (error_nozotitle && !error_nozotitle_shown) {
+            var progressWindowNozotitle = new Zotero.ProgressWindow({closeOnClick:true});
+            progressWindowNozotitle.changeHeadline("Citation count not found");
+            if (getPref("tag_nozotitle") !== "") {
+                progressWindowNozotitle.progress = new progressWindowNozotitle.ItemProgress(icon, "No citation count was found for some items. These have been tagged with '" + getPref("tag_nozotitle") + "'.");
             } else {
-                progressWindowNocitationcounts.progress = new progressWindowNocitationcounts.ItemProgress(icon, "No citation counts was found for some items.");
+                progressWindowNozotitle.progress = new progressWindowNozotitle.ItemProgress(icon, "No citation counts was found for some items.");
             }
-            progressWindowNocitationcounts.progress.setError();
-            progressWindowNocitationcounts.show();
-            progressWindowNocitationcounts.startCloseTimer(8000);  
-            error_nocitationcounts_shown = true; 
+            progressWindowNozotitle.progress.setError();
+            progressWindowNozotitle.show();
+            progressWindowNozotitle.startCloseTimer(8000);  
+            error_nozotitle_shown = true; 
         }
         if (error_multiple && !error_multiple_shown) {
             var progressWindowMulti = new Zotero.ProgressWindow({closeOnClick:true});
