@@ -20,7 +20,7 @@
     <groupbox>
       <caption label="&autoretrieve-label;"/>
       <radiogroup id="id-zotitle-autoretrieve" preference="pref-zotitle-autoretrieve">
-        <radio label="&autoretrieve-crossref-label;" value='crossref'/>
+        <radio label="&autoretrieve-upper-label;" value='upper'/>
         <radio label="&autoretrieve-inspire-label;" value='inspire'/>
         <radio label="&autoretrieve-ads-label;" value='ads'/>
         <radio label="&autoretrieve-semanticscholar-label;" value='semanticscholar'/>

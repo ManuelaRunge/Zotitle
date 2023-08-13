@@ -7,11 +7,11 @@ Zotero.CitationCounts = {};
 // Definitions
 
 const operations = [
-    "crossref", "inspire", "ads", "semanticscholar"
+    "upper", "inspire", "ads", "semanticscholar"
 ];
 
 const operationNames = {
-    "crossref": "Crossref",
+    "upper": "changeToUpper",
     "inspire": "Inspire HEP",
     "ads": "NASA/ADS",
     "semanticscholar": "Semantic Scholar"
@@ -415,11 +415,11 @@ Zotero.CitationCounts.updateNextItem = function(operation) {
 };
 
 Zotero.CitationCounts.updateItem = async function(item, operation) {
-    if (operation == "crossref") {
+    if (operation == "upper") {
 
         const count = await getCrossrefCount(item);
         if (count >= 0) {
-            setCitationCount(item, 'Crossref', count);
+            setCitationCount(item, 'changeToUpper', count);
             item.saveTx();
             Zotero.CitationCounts.counter++;
         }

@@ -20,9 +20,9 @@
         <menu class="menu-iconic" id="zotero-itemmenu-zotitle-menu" label="&zotitle-menu-label;">
             <menupopup id="zotero-itemmenu-zotitle-menupopup">
                 <menuitem
-                    id="zotero-itemmenu-zotitle-crossref"
-                    label="&zotitle-menu-crossref-label;"
-                    oncommand="Zotero.CitationCounts.updateSelectedItems('crossref')"/>
+                    id="zotero-itemmenu-zotitle-upper"
+                    label="&zotitle-menu-upper-label;"
+                    oncommand="Zotero.CitationCounts.updateSelectedItems('upper')"/>
                 <menuitem
                     id="zotero-itemmenu-zotitle-inspire"
                     label="&zotitle-menu-inspire-label;"
@@ -44,10 +44,10 @@
       <menu id="menu_Tools-zotitle-menu" label="&zotitle-autoretrieve-label;">
         <menupopup id="menu_Tools-zotitle-menu-popup" onpopupshowing="Zotero.CitationCounts.setCheck();">
           <menuitem
-              id="menu_Tools-zotitle-menu-popup-crossref"
+              id="menu_Tools-zotitle-menu-popup-upper"
               type="checkbox"
-              label="&zotitle-autoretrieve-crossref-label;"
-              oncommand="Zotero.CitationCounts.changePref('crossref');"/>
+              label="&zotitle-autoretrieve-upper-label;"
+              oncommand="Zotero.CitationCounts.changePref('upper');"/>
           <menuitem
               id="menu_Tools-zotitle-menu-popup-inspire"
               type="checkbox"

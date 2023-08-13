@@ -1,5 +1,5 @@
 <!ENTITY zotitle.toolsmenu.label "Change title case for selected items">
-<!ENTITY zotitle.crossref.label "UPPERCASE">
+<!ENTITY zotitle.upper.label "UPPERCASE">
 <!ENTITY zotitle.inspire.label "lowercase">
 <!ENTITY zotitle.ads.label "Sentence case">
 <!ENTITY zotitle.semanticscholar.label "Camel Case">
@@ -7,14 +7,14 @@
 
 <!ENTITY zotitle-preferences-label "Item Title Modifier Preferences…">
 <!ENTITY zotitle-autoretrieve-label "Change title case for selected items">
-<!ENTITY zotitle-autoretrieve-crossref-label "Crossref">
+<!ENTITY zotitle-autoretrieve-upper-label "changeToUpper">
 <!ENTITY zotitle-autoretrieve-inspire-label "Inspire HEP">
 <!ENTITY zotitle-autoretrieve-ads-label "NASA/ADS">
 <!ENTITY zotitle-autoretrieve-semanticscholar-label "Camel Case">
 <!ENTITY zotitle-autoretrieve-no-label "No">
 
 <!ENTITY zotitle-menu-label "Item Title Manager">
-<!ENTITY zotitle-menu-crossref-label "UPPERCASE">
+<!ENTITY zotitle-menu-upper-label "UPPERCASE">
 <!ENTITY zotitle-menu-inspire-label "lowercase">
 <!ENTITY zotitle-menu-ads-label "Sentence case">
 <!ENTITY zotitle-menu-semanticscholar-label "Camel Case">
