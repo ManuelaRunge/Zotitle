@@ -13,7 +13,7 @@
 <!ENTITY zotitle-autoretrieve-sentence-label "changeToSentence">
 <!ENTITY zotitle-autoretrieve-no-label "No">
 
-<!ENTITY zotitle-menu-label "Item Title Manager">
+<!ENTITY zotitle-menu-label "Change title case">
 <!ENTITY zotitle-menu-upper-label "UPPERCASE">
 <!ENTITY zotitle-menu-lower-label "lowercase">
 <!ENTITY zotitle-menu-title-label "Title Case">
