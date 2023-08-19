@@ -6,13 +6,13 @@
     <RDF:Description
         RDF:about="urn:mozilla:install-manifest"
         em:id="schnetter@gmail.com"
-        em:name="Zotero Citation Counts Manager"
+        em:name="Zotero Title Manager"
         em:version="1.3.0"
         em:type="2"
         em:creator="Erik Schnetter"
-        em:description="Automatically fetch and update citation counts"
-        em:homepageURL="https://github.com/eschnett/zotero-citationcounts"
-        em:updateURL="https://raw.githubusercontent.com/eschnett/zotero-citationcounts/master/update.rdf">
+        em:description="Fetch and change title case of selected items"
+        em:homepageURL="https://github.com/ManuelaRunge/Zotitle"
+        em:updateURL="https://github.com/ManuelaRunge/Zotitle/master/update.rdf">
         <em:type>2</em:type>
         <em:targetApplication>
             <Description>
