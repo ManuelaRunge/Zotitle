@@ -19,7 +19,7 @@ const operationNames = {
 
 
 
-function setCitationCount(item, tag) {
+function changeTitleCase(item, tag) {
 	//Slightly modified from Thieu: https://stackoverflow.com/questions/2970525/converting-any-string-into-camel-case
 	String.prototype.toTitleCase = function(){
 		var newString = '';
@@ -276,9 +276,7 @@ Zotero.ChangeTitleCase.resetState = function(operation) {
         Zotero.ChangeTitleCase.progressWindow.changeHeadline("Finished");
         Zotero.ChangeTitleCase.progressWindow.progress = new Zotero.ChangeTitleCase.progressWindow.ItemProgress(icon);
         Zotero.ChangeTitleCase.progressWindow.progress.setProgress(100);
-        Zotero.ChangeTitleCase.progressWindow.progress.setText(
-            operationNames[operation] + " title case updated for " +
-                Zotero.ChangeTitleCase.counter + " items.");
+        Zotero.ChangeTitleCase.progressWindow.progress.setText("Title case updated for " + Zotero.ChangeTitleCase.counter + " items.");
         Zotero.ChangeTitleCase.progressWindow.show();
         Zotero.ChangeTitleCase.progressWindow.startCloseTimer(4000);
         final_count_shown = true;
@@ -344,7 +342,7 @@ Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
 
         const count = await checkTitleExist(item);
         if (count >= 0) {
-            setCitationCount(item, 'changeToUpper');
+            changeTitleCase(item, 'changeToUpper');
             item.saveTx();
             Zotero.ChangeTitleCase.counter++;
         }
@@ -355,7 +353,7 @@ Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
 
         const count = await checkTitleExist(item);
         if (count >= 0) {
-            setCitationCount(item, 'changeToLower');
+            changeTitleCase(item, 'changeToLower');
             item.saveTx();
             Zotero.ChangeTitleCase.counter++;
         }
@@ -366,7 +364,7 @@ Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
 
         const count = await checkTitleExist(item);
         if (count >= 0) {
-            setCitationCount(item, 'changeToTitle');
+            changeTitleCase(item, 'changeToTitle');
             item.saveTx();
             Zotero.ChangeTitleCase.counter++;
         }
@@ -377,7 +375,7 @@ Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
 
         const count = await checkTitleExist(item);
         if (count >= 0) {
-            setCitationCount(item, 'changeToSentence');
+            changeTitleCase(item, 'changeToSentence');
             item.saveTx();
             Zotero.ChangeTitleCase.counter++;
         }
