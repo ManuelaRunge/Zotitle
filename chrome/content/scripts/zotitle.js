@@ -70,41 +70,6 @@ function changeTitleCase(item, tag) {
 }
 
 
-// Preference managers
-
-function getPref(pref) {
-    return Zotero.Prefs.get('extensions.citationcounts.' + pref, true)
-};
-
-function setPref(pref, value) {
-    return Zotero.Prefs.set('extensions.citationcounts.' + pref, value, true)
-};
-
-// Startup - initialize plugin
-
-Zotero.ChangeTitleCase.init = function() {
-    Zotero.ChangeTitleCase.resetState("initial");
-
-    // Register the callback in Zotero as an item observer
-    const notifierID = Zotero.Notifier.registerObserver(
-        Zotero.ChangeTitleCase.notifierCallback, ['item']);
-
-    // Unregister callback when the window closes (important to avoid
-    // a memory leak)
-    window.addEventListener('unload', function(e) {
-        Zotero.Notifier.unregisterObserver(notifierID);
-    }, false);
-};
-
-Zotero.ChangeTitleCase.notifierCallback = {
-    notify: function(event, type, ids, extraData) {
-        if (event == 'add') {
-            const operation = getPref("autoretrieve");
-            Zotero.ChangeTitleCase.updateItems(Zotero.Items.get(ids), operation);
-        }
-    }
-};
-
 
 
 Zotero.ChangeTitleCase.resetState = function(operation) {
@@ -232,8 +197,3 @@ Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
 };
 
 
-if (typeof window !== 'undefined') {
-    window.addEventListener('load', function(e) {
-        Zotero.ChangeTitleCase.init();
-    }, false);
-}
