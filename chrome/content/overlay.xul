@@ -6,7 +6,7 @@
     id="zotitle"
     xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
 
-    <script src="chrome://zotitle/content/scripts/zotitle.js"/>
+    <script src="chrome://zotitle/content/zotitle.js"/>
 
     <stringbundleset id="stringbundleset">
         <stringbundle
