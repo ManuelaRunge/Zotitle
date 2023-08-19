@@ -21,19 +21,19 @@
                 <menuitem
                     id="zotero-itemmenu-zotitle-upper"
                     label="&zotitle-menu-upper-label;"
-                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('upper')"/>
+                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('to_upper')"/>
                 <menuitem
                     id="zotero-itemmenu-zotitle-lower"
                     label="&zotitle-menu-lower-label;"
-                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('lower')"/>
+                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('to_lower')"/>
                 <menuitem
                     id="zotero-itemmenu-zotitle-title"
                     label="&zotitle-menu-title-label;"
-                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('title')"/>
+                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('to_title')"/>
                 <menuitem
                     id="zotero-itemmenu-zotitle-sentence"
                     label="&zotitle-menu-sentence-label;"
-                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('sentence')"/>
+                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('to_sentence')"/>
             </menupopup>
         </menu>
     </popup>

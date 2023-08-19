@@ -1,25 +1,11 @@
-// Startup -- load Zotero and constants
+// Startup -- load Zotero 
 if (typeof Zotero === 'undefined') {
     Zotero = {};
 }
 Zotero.ChangeTitleCase = {};
 
-// Definitions
 
-const operations = [
-    "upper", "lower", "title", "sentence"
-];
-
-const operationNames = {
-    "upper": "changeToUpper",
-    "lower": "changeToLower",
-    "title": "changeToTitle",
-    "sentence": "changeToSentence"
-};
-
-
-
-function changeTitleCase(item, tag) {
+function changeTitleCase(item, operation) {
 	//Slightly modified from Thieu: https://stackoverflow.com/questions/2970525/converting-any-string-into-camel-case
 	String.prototype.toTitleCase = function(){
 		var newString = '';
@@ -51,19 +37,19 @@ function changeTitleCase(item, tag) {
 	}
 
 
-	if (tag == 'changeToUpper') {
+	if (operation == 'to_upper') {
 		let title = item.getField('title');
 		item.setField('title', title.toUpperCase());
 	}
-	if (tag == 'changeToLower') {
+	if (operation == 'to_lower') {
 		let title = item.getField('title');
 		item.setField('title', title.toLowerCase());
 	}
-	if (tag == 'changeToTitle') {
+	if (operation == 'to_title') {
 		let title = item.getField('title');
 		item.setField('title', title.toTitleCase());
 	}
-	if (tag == 'changeToSentence') {
+	if (operation == 'to_sentence') {
 		let title = item.getField('title');
 		item.setField('title', title.toSentenceCase());
 	}
@@ -120,7 +106,7 @@ Zotero.ChangeTitleCase.updateItems = function(items0, operation) {
     Zotero.ChangeTitleCase.progressWindow =
         new Zotero.ProgressWindow({closeOnClick: false});
     Zotero.ChangeTitleCase.progressWindow.changeHeadline(
-        "Title " + operationNames[operation]);
+        "Title " + operation);
     Zotero.ChangeTitleCase.progressWindow.progress =
         new Zotero.ChangeTitleCase.progressWindow.ItemProgress(
             "Changing title case...");
@@ -154,46 +140,14 @@ Zotero.ChangeTitleCase.updateNextItem = function(operation) {
 
 
 Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
-    if (operation == "upper") {
 
-        if (item.getField('title')) {
-            changeTitleCase(item, 'changeToUpper');
-            item.saveTx();
-            Zotero.ChangeTitleCase.counter++;
-        }
-        Zotero.ChangeTitleCase.updateNextItem(operation);
+	if (item.getField('title')) {
+		changeTitleCase(item, operation);
+		item.saveTx();
+		Zotero.ChangeTitleCase.counter++;
+	}
+	Zotero.ChangeTitleCase.updateNextItem(operation);
 
-    } 
-	if (operation == "lower") {
-
-        if (item.getField('title')) {
-            changeTitleCase(item, 'changeToLower');
-            item.saveTx();
-            Zotero.ChangeTitleCase.counter++;
-        }
-        Zotero.ChangeTitleCase.updateNextItem(operation);
-
-    } 
-	if (operation == "title") {
-
-        if (item.getField('title')) {
-            changeTitleCase(item, 'changeToTitle');
-            item.saveTx();
-            Zotero.ChangeTitleCase.counter++;
-        }
-        Zotero.ChangeTitleCase.updateNextItem(operation);
-
-    } 
-	if (operation == "sentence") {
-
-        if (item.getField('title')) {
-            changeTitleCase(item, 'changeToSentence');
-            item.saveTx();
-            Zotero.ChangeTitleCase.counter++;
-        }
-        Zotero.ChangeTitleCase.updateNextItem(operation);
-
-    }
 };
 
 
