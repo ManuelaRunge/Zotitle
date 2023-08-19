@@ -277,7 +277,7 @@ Zotero.ChangeTitleCase.resetState = function(operation) {
         Zotero.ChangeTitleCase.progressWindow.progress = new Zotero.ChangeTitleCase.progressWindow.ItemProgress(icon);
         Zotero.ChangeTitleCase.progressWindow.progress.setProgress(100);
         Zotero.ChangeTitleCase.progressWindow.progress.setText(
-            operationNames[operation] + " citation counts updated for " +
+            operationNames[operation] + " title case updated for " +
                 Zotero.ChangeTitleCase.counter + " items.");
         Zotero.ChangeTitleCase.progressWindow.show();
         Zotero.ChangeTitleCase.progressWindow.startCloseTimer(4000);
@@ -305,16 +305,11 @@ Zotero.ChangeTitleCase.updateItems = function(items0, operation) {
     // Progress Windows
     Zotero.ChangeTitleCase.progressWindow =
         new Zotero.ProgressWindow({closeOnClick: false});
-    const icon = 'chrome://zotero/skin/toolbar-advanced-search' +
-          (Zotero.hiDPI ? "@2x" : "") + '.png';
     Zotero.ChangeTitleCase.progressWindow.changeHeadline(
-        "Getting " + operationNames[operation] + " citation counts", icon);
-    const doiIcon =
-          'chrome://zotitle/skin/doi' +
-          (Zotero.hiDPI ? "@2x" : "") + '.png';
+        "Title " + operationNames[operation]);
     Zotero.ChangeTitleCase.progressWindow.progress =
         new Zotero.ChangeTitleCase.progressWindow.ItemProgress(
-            doiIcon, "Retrieving citation counts.");
+            "Changing title case...");
     Zotero.ChangeTitleCase.updateNextItem(operation);
 };
 
