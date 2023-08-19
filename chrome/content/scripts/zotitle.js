@@ -69,7 +69,7 @@ function setCitationCount(item, tag) {
 	}
 }
 
-async function getCrossrefCount(item) {
+async function checkTitleExist(item) {
     const doi = item.getField('DOI');
     if (!doi) {
         // There is no DOI; skip item
@@ -342,7 +342,7 @@ Zotero.ChangeTitleCase.updateNextItem = function(operation) {
 Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
     if (operation == "upper") {
 
-        const count = await getCrossrefCount(item);
+        const count = await checkTitleExist(item);
         if (count >= 0) {
             setCitationCount(item, 'changeToUpper');
             item.saveTx();
@@ -353,7 +353,7 @@ Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
     } 
 	if (operation == "lower") {
 
-        const count = await getCrossrefCount(item);
+        const count = await checkTitleExist(item);
         if (count >= 0) {
             setCitationCount(item, 'changeToLower');
             item.saveTx();
@@ -364,7 +364,7 @@ Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
     } 
 	if (operation == "title") {
 
-        const count = await getCrossrefCount(item);
+        const count = await checkTitleExist(item);
         if (count >= 0) {
             setCitationCount(item, 'changeToTitle');
             item.saveTx();
@@ -375,7 +375,7 @@ Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
     } 
 	if (operation == "sentence") {
 
-        const count = await getCrossrefCount(item);
+        const count = await checkTitleExist(item);
         if (count >= 0) {
             setCitationCount(item, 'changeToSentence');
             item.saveTx();
