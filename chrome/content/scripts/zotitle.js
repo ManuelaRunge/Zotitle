@@ -70,51 +70,13 @@ function changeTitleCase(item, tag) {
 }
 
 async function checkTitleExist(item) {
-    const doi = item.getField('DOI');
-    if (!doi) {
-        // There is no DOI; skip item
-        return -1;
-    }
-    const edoi = encodeURIComponent(doi);
-
-    let response = null;
-
-    if (response === null) {
-        const style = "vnd.citationstyles.csl+json";
-        const xform = "transform/application/" + style;
-        const url = "https://api.crossref.org/works/" + edoi + "/" + xform;
-        response = await fetch(url)
-            .then(response => response.json())
-            .catch(err => null);
-    }
-
-    if (response === null) {
-        const url = "https://doi.org/" + edoi;
-        const style = "vnd.citationstyles.csl+json";
-        response = await fetch(url, {
-            headers: {
-                "Accept": "application/" + style
-            }
-        })
-            .then(response => response.json())
-            .catch(err => null);
-        }
-
-    if (response === null) {
-        // Something went wrong
+    const title = item.getField('title');
+    if (!title) {
+        // There is no title; skip item
         return -1;
     }
 
-    let str = null;
-    try {
-        str = response['is-referenced-by-count'];
-    } catch (err) {
-        // There are no citation counts
-        return -1;
-    }
-
-    const count = parseInt(str);
-    return count;
+    return 1;
 }
 
 
@@ -239,8 +201,8 @@ Zotero.ChangeTitleCase.updateNextItem = function(operation) {
 Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
     if (operation == "upper") {
 
-        const count = await checkTitleExist(item);
-        if (count >= 0) {
+        const exist = await checkTitleExist(item);
+        if (exist >= 0) {
             changeTitleCase(item, 'changeToUpper');
             item.saveTx();
             Zotero.ChangeTitleCase.counter++;
@@ -250,8 +212,8 @@ Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
     } 
 	if (operation == "lower") {
 
-        const count = await checkTitleExist(item);
-        if (count >= 0) {
+        const exist = await checkTitleExist(item);
+        if (exist >= 0) {
             changeTitleCase(item, 'changeToLower');
             item.saveTx();
             Zotero.ChangeTitleCase.counter++;
@@ -261,8 +223,8 @@ Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
     } 
 	if (operation == "title") {
 
-        const count = await checkTitleExist(item);
-        if (count >= 0) {
+        const exist = await checkTitleExist(item);
+        if (exist >= 0) {
             changeTitleCase(item, 'changeToTitle');
             item.saveTx();
             Zotero.ChangeTitleCase.counter++;
@@ -272,8 +234,8 @@ Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
     } 
 	if (operation == "sentence") {
 
-        const count = await checkTitleExist(item);
-        if (count >= 0) {
+        const exist = await checkTitleExist(item);
+        if (exist >= 0) {
             changeTitleCase(item, 'changeToSentence');
             item.saveTx();
             Zotero.ChangeTitleCase.counter++;
