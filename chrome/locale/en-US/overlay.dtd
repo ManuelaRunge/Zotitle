@@ -1,18 +1,3 @@
-<!ENTITY zotitle.toolsmenu.label "Change title case for selected items">
-<!ENTITY zotitle.upper.label "UPPERCASE">
-<!ENTITY zotitle.lower.label "lowercase">
-<!ENTITY zotitle.title.label "Title Case">
-<!ENTITY zotitle.sentence.label "Sentence case">
-<!ENTITY zotitle.menu.label "Change title case">
-
-<!ENTITY zotitle-preferences-label "Item Title Modifier Preferences…">
-<!ENTITY zotitle-autoretrieve-label "Change title case for selected items">
-<!ENTITY zotitle-autoretrieve-upper-label "changeToUpper">
-<!ENTITY zotitle-autoretrieve-lower-label "changeToLower">
-<!ENTITY zotitle-autoretrieve-title-label "changeToTitle">
-<!ENTITY zotitle-autoretrieve-sentence-label "changeToSentence">
-<!ENTITY zotitle-autoretrieve-no-label "No">
-
 <!ENTITY zotitle-menu-label "Change title case">
 <!ENTITY zotitle-menu-upper-label "UPPERCASE">
 <!ENTITY zotitle-menu-lower-label "lowercase">
