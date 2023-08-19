@@ -1,7 +1,0 @@
-<!ENTITY zotero.zotitle "Change capitalization of title">
-<!ENTITY zotero.zotitle.menuitem "Zotitle">
-<!ENTITY zotero.zotitle-manage-titlecase.label "Zotitle">
-<!ENTITY zotero.zotitle-uppercase.label "UPPER CASE">
-<!ENTITY zotero.zotitle-lowercase.label "lower case">
-<!ENTITY zotero.zotitle-titlecase.label "Title case">
-<!ENTITY zotero.zotitle-camelcase.label "Camel Case">

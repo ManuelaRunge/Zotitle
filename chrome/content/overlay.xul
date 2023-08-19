@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://zotitle/locale/overlay.dtd">
+
+<overlay
+    id="zotitle"
+    xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+
+    <script src="chrome://zotitle/content/scripts/zotitle.js"/>
+
+    <stringbundleset id="stringbundleset">
+        <stringbundle
+            id="zotitle-bundle"
+            src="chrome://zotitle/locale/zotitle.properties"/>
+    </stringbundleset>
+
+    <popup
+        id="zotero-itemmenu">
+        <menu class="menu-iconic" id="zotero-itemmenu-zotitle-menu" label="&zotitle-menu-label;">
+            <menupopup id="zotero-itemmenu-zotitle-menupopup">
+                <menuitem
+                    id="zotero-itemmenu-zotitle-upper"
+                    label="&zotitle-menu-upper-label;"
+                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('to_upper')"/>
+                <menuitem
+                    id="zotero-itemmenu-zotitle-lower"
+                    label="&zotitle-menu-lower-label;"
+                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('to_lower')"/>
+                <menuitem
+                    id="zotero-itemmenu-zotitle-title"
+                    label="&zotitle-menu-title-label;"
+                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('to_title')"/>
+                <menuitem
+                    id="zotero-itemmenu-zotitle-sentence"
+                    label="&zotitle-menu-sentence-label;"
+                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('to_sentence')"/>
+            </menupopup>
+        </menu>
+    </popup>
+    
+</overlay>
