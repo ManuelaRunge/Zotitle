@@ -69,16 +69,6 @@ function changeTitleCase(item, tag) {
 	}
 }
 
-async function checkTitleExist(item) {
-    const title = item.getField('title');
-    if (!title) {
-        // There is no title; skip item
-        return -1;
-    }
-
-    return 1;
-}
-
 
 // Preference managers
 
@@ -201,8 +191,7 @@ Zotero.ChangeTitleCase.updateNextItem = function(operation) {
 Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
     if (operation == "upper") {
 
-        const exist = await checkTitleExist(item);
-        if (exist >= 0) {
+        if (item.getField('title')) {
             changeTitleCase(item, 'changeToUpper');
             item.saveTx();
             Zotero.ChangeTitleCase.counter++;
@@ -212,8 +201,7 @@ Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
     } 
 	if (operation == "lower") {
 
-        const exist = await checkTitleExist(item);
-        if (exist >= 0) {
+        if (item.getField('title')) {
             changeTitleCase(item, 'changeToLower');
             item.saveTx();
             Zotero.ChangeTitleCase.counter++;
@@ -223,8 +211,7 @@ Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
     } 
 	if (operation == "title") {
 
-        const exist = await checkTitleExist(item);
-        if (exist >= 0) {
+        if (item.getField('title')) {
             changeTitleCase(item, 'changeToTitle');
             item.saveTx();
             Zotero.ChangeTitleCase.counter++;
@@ -234,8 +221,7 @@ Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
     } 
 	if (operation == "sentence") {
 
-        const exist = await checkTitleExist(item);
-        if (exist >= 0) {
+        if (item.getField('title')) {
             changeTitleCase(item, 'changeToSentence');
             item.saveTx();
             Zotero.ChangeTitleCase.counter++;
