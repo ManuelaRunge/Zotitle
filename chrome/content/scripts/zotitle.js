@@ -216,60 +216,10 @@ Zotero.ChangeTitleCase.resetState = function(operation) {
         Zotero.ChangeTitleCase.itemsToUpdate = null;
         Zotero.ChangeTitleCase.numberOfUpdatedItems = 0;
         Zotero.ChangeTitleCase.counter = 0;
-        error_invalid = null;
-        error_nozotitle = null;
-        error_multiple = null;
-        error_invalid_shown = false;
-        error_nozotitle_shown = false;
-        error_multiple_shown = false;
         final_count_shown = false;
         return;
     } 
 
-    if (error_invalid || error_nozotitle || error_multiple) {
-        Zotero.ChangeTitleCase.progressWindow.close();
-        const icon = "chrome://zotero/skin/cross.png";
-        if (error_invalid && !error_invalid_shown) {
-            var progressWindowInvalid = new Zotero.ProgressWindow({closeOnClick:true});
-            progressWindowInvalid.changeHeadline("Invalid DOI");
-            if (getPref("tag_invalid") !== "") {
-                progressWindowInvalid.progress = new progressWindowInvalid.ItemProgress(icon, "Invalid citation counts were found. These have been tagged with '" + getPref("tag_invalid") + "'.");
-            } else {
-                progressWindowInvalid.progress = new progressWindowInvalid.ItemProgress(icon, "Invalid citation counts were found.");
-            }
-            progressWindowInvalid.progress.setError();
-            progressWindowInvalid.show();
-            progressWindowInvalid.startCloseTimer(8000);
-            error_invalid_shown = true;
-        }
-        if (error_nozotitle && !error_nozotitle_shown) {
-            var progressWindowNozotitle = new Zotero.ProgressWindow({closeOnClick:true});
-            progressWindowNozotitle.changeHeadline("Citation count not found");
-            if (getPref("tag_nozotitle") !== "") {
-                progressWindowNozotitle.progress = new progressWindowNozotitle.ItemProgress(icon, "No citation count was found for some items. These have been tagged with '" + getPref("tag_nozotitle") + "'.");
-            } else {
-                progressWindowNozotitle.progress = new progressWindowNozotitle.ItemProgress(icon, "No citation counts was found for some items.");
-            }
-            progressWindowNozotitle.progress.setError();
-            progressWindowNozotitle.show();
-            progressWindowNozotitle.startCloseTimer(8000);  
-            error_nozotitle_shown = true; 
-        }
-        if (error_multiple && !error_multiple_shown) {
-            var progressWindowMulti = new Zotero.ProgressWindow({closeOnClick:true});
-            progressWindowMulti.changeHeadline("Multiple possible citation counts");
-            if (getPref("tag_multiple") !== "") {
-                progressWindowMulti.progress = new progressWindowMulti.ItemProgress(icon, "Some items had multiple possible citation counts. Links to lists of citation counts have been added and tagged with '" + getPref("tag_multiple") + "'.");
-            } else {
-                progressWindowMulti.progress = new progressWindowMulti.ItemProgress(icon, "Some items had multiple possible DOIs.");
-            }
-            progressWindow.progress.setError();
-            progressWindowMulti.show();
-            progressWindowMulti.startCloseTimer(8000); 
-            error_multiple_shown = true; 
-        }
-        return;
-    }
     if (!final_count_shown) {
         const icon = "chrome://zotero/skin/tick.png";
         Zotero.ChangeTitleCase.progressWindow = new Zotero.ProgressWindow({closeOnClick:true});
