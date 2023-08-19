@@ -3,7 +3,7 @@
 <!ENTITY zotitle.lower.label "lowercase">
 <!ENTITY zotitle.title.label "Title Case">
 <!ENTITY zotitle.sentence.label "Sentence case">
-<!ENTITY zotitle.menu.label "Item Title Manager">
+<!ENTITY zotitle.menu.label "Change title case">
 
 <!ENTITY zotitle-preferences-label "Item Title Modifier Preferences…">
 <!ENTITY zotitle-autoretrieve-label "Change title case for selected items">
