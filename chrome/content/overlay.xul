@@ -24,17 +24,17 @@
                     label="&zotitle-menu-upper-label;"
                     oncommand="Zotero.ChangeTitleCase.updateSelectedItems('upper')"/>
                 <menuitem
-                    id="zotero-itemmenu-zotitle-inspire"
-                    label="&zotitle-menu-inspire-label;"
-                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('inspire')"/>
+                    id="zotero-itemmenu-zotitle-lower"
+                    label="&zotitle-menu-lower-label;"
+                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('lower')"/>
                 <menuitem
-                    id="zotero-itemmenu-zotitle-ads"
-                    label="&zotitle-menu-ads-label;"
-                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('ads')"/>
+                    id="zotero-itemmenu-zotitle-title"
+                    label="&zotitle-menu-title-label;"
+                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('title')"/>
                 <menuitem
-                    id="zotero-itemmenu-zotitle-semanticscholar"
-                    label="&zotitle-menu-semanticscholar-label;"
-                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('semanticscholar')"/>
+                    id="zotero-itemmenu-zotitle-sentence"
+                    label="&zotitle-menu-sentence-label;"
+                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('sentence')"/>
             </menupopup>
         </menu>
     </popup>

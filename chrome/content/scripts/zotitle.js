@@ -7,39 +7,66 @@ Zotero.ChangeTitleCase = {};
 // Definitions
 
 const operations = [
-    "upper", "inspire", "ads", "semanticscholar"
+    "upper", "lower", "title", "sentence"
 ];
 
 const operationNames = {
     "upper": "changeToUpper",
-    "inspire": "Inspire HEP",
-    "ads": "NASA/ADS",
-    "semanticscholar": "Semantic Scholar"
+    "lower": "changeToLower",
+    "title": "changeToTitle",
+    "sentence": "changeToSentence"
 };
 
-// function getCitationCount(item, tag) {
-//     let extra = item.getField('extra');
-//     if (!extra) {
-//         return -1;
-//     }
-//     let extras = extra.split("\n");
-//     const patt = new RegExp("^Citations \\(" + tag + "\\): (\\d+).*", "i");
-//     extras = extras.filter(ex => patt.test(ex));
-//     if (length(extras) == 0) {
-//         return -1;
-//     }
-//     let count = patt.exec(extras[1])[1]
-//     if (!count) {
-//         return -1;
-//     }
-//     count = parseInt(count);
-//     return count;
-// }
 
-function setCitationCount(item, tag, count) {
 
-	let title = item.getField('title');
-	item.setField('title', title.toUpperCase());
+function setCitationCount(item, tag) {
+	//Slightly modified from Thieu: https://stackoverflow.com/questions/2970525/converting-any-string-into-camel-case
+	String.prototype.toTitleCase = function(){
+		var newString = '';
+		var lastEditedIndex;
+		for (var i = 0; i < this.length; i++){
+			if(i==0)newString += this[i].toUpperCase();
+			else if(this[i] == ' ' || this[i] == '-' || this[i] == '_'){
+				newString += this[i]
+				newString += this[i+1].toUpperCase();
+				lastEditedIndex = i+1;
+			}
+			else if(lastEditedIndex !== i) newString += this[i].toLowerCase();
+		}
+		return newString;
+	}
+		
+	// see https://www.zotero.org/support/dev/client_coding/javascript_api#managing_citations_and_bibliographies
+	var items = Zotero.getActiveZoteroPane().getSelectedItems();
+	
+	String.prototype.toSentenceCase = function(){
+		var newString = '';
+		var lastEditedIndex;
+		for (var i = 0; i < this.length; i++){
+			if(i==0)newString += this[i].toUpperCase();
+			//to do, add exceptions
+			else if(i>0) newString += this[i].toLowerCase();
+		}
+		return newString;
+	}
+
+
+	if (tag == 'changeToUpper') {
+		let title = item.getField('title');
+		item.setField('title', title.toUpperCase());
+	}
+	if (tag == 'changeToLower') {
+		let title = item.getField('title');
+		item.setField('title', title.toLowerCase());
+	}
+	if (tag == 'changeToTitle') {
+		let title = item.getField('title');
+		item.setField('title', title.toTitleCase());
+	}
+	if (tag == 'changeToSentence') {
+		let title = item.getField('title');
+		item.setField('title', title.toSentenceCase());
+	}
 }
 
 async function getCrossrefCount(item) {
@@ -90,50 +117,6 @@ async function getCrossrefCount(item) {
     return count;
 }
 
-async function getInspireCount(item, idtype) {
-    let doi = null;
-    if (idtype == 'doi') {
-        doi = item.getField('DOI');
-    } else if (idtype == 'arxiv') {
-        const arxiv = item.getField('url'); // check URL for arXiv id
-        const patt = /(?:arxiv.org[/]abs[/]|arXiv:)([a-z.-]+[/]\d+|\d+[.]\d+)/i;
-        const m = patt.exec(arxiv);
-        if (!m) {
-            // No arxiv id found
-            return -1;
-        }
-        doi = m[1];
-    } else {
-        // Internal error
-        return -1;
-    }
-    if (!doi) {
-        // There is no DOI / arXiv id; skip item
-        return -1;
-    }
-    const edoi = encodeURIComponent(doi);
-
-    const url = "https://inspirehep.net/api/" + idtype + "/" + edoi;
-    const response = await fetch(url)
-          .then(response => response.json())
-          .catch(err => null);
-
-    if (response === null) {
-        // Something went wrong
-        return -1;
-    }
-
-    let str = null;
-    try {
-        str = response['metadata']['citation_count'];
-    } catch (err) {
-        // There are no citation counts
-        return -1;
-    }
-
-    const count = parseInt(str);
-    return count;
-}
 
 async function getSemanticScholarCount(item, idtype) {
     let doi = null;
@@ -360,6 +343,7 @@ Zotero.ChangeTitleCase.updateNextItem = function(operation) {
         operation);
 };
 
+
 Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
     if (operation == "upper") {
 
@@ -372,29 +356,41 @@ Zotero.ChangeTitleCase.updateItem = async function(item, operation) {
         Zotero.ChangeTitleCase.updateNextItem(operation);
 
     } 
-	if (operation == "inspire") {
+	if (operation == "lower") {
 
         const count = await getCrossrefCount(item);
         if (count >= 0) {
-            setCitationCount(item, 'changeToUpper');
+            setCitationCount(item, 'changeToLower');
             item.saveTx();
             Zotero.ChangeTitleCase.counter++;
         }
         Zotero.ChangeTitleCase.updateNextItem(operation);
 
     } 
-	if (operation == "semanticscholar") {
+	if (operation == "title") {
 
         const count = await getCrossrefCount(item);
         if (count >= 0) {
-            setCitationCount(item, 'changeToUpper');
+            setCitationCount(item, 'changeToTitle');
             item.saveTx();
             Zotero.ChangeTitleCase.counter++;
         }
         Zotero.ChangeTitleCase.updateNextItem(operation);
 
     } 
+	if (operation == "sentence") {
+
+        const count = await getCrossrefCount(item);
+        if (count >= 0) {
+            setCitationCount(item, 'changeToSentence');
+            item.saveTx();
+            Zotero.ChangeTitleCase.counter++;
+        }
+        Zotero.ChangeTitleCase.updateNextItem(operation);
+
+    }
 };
+
 
 if (typeof window !== 'undefined') {
     window.addEventListener('load', function(e) {
