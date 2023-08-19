@@ -5,11 +5,11 @@
     xmlns:RDF="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
     <RDF:Description
         RDF:about="urn:mozilla:install-manifest"
-        em:id="schnetter@gmail.com"
+        em:id="manuelarunge10@gmail.com"
         em:name="Zotero Title Manager"
-        em:version="1.3.0"
+        em:version="1.0.0"
         em:type="2"
-        em:creator="Erik Schnetter"
+        em:creator="Manuela Runge"
         em:description="Fetch and change title case of selected items"
         em:homepageURL="https://github.com/ManuelaRunge/Zotitle"
         em:updateURL="https://github.com/ManuelaRunge/Zotitle/master/update.rdf">
