@@ -7,12 +7,12 @@
         RDF:about="urn:mozilla:install-manifest"
         em:id="manuelarunge10@gmail.com"
         em:name="Zotero Title Manager"
-        em:version="1.0.0"
+        em:version="1.0.1"
         em:type="2"
         em:creator="Manuela Runge"
         em:description="Fetch and change title case of selected items"
         em:homepageURL="https://github.com/ManuelaRunge/Zotitle"
-        em:updateURL="https://github.com/ManuelaRunge/Zotitle/master/update.rdf">
+        em:updateURL="https://raw.githubusercontent.com/ManuelaRunge/Zotitle/master/updates.json">
         <em:type>2</em:type>
         <em:targetApplication>
             <Description>

@@ -3,7 +3,9 @@ Zotitle
 
 Very simple zotero plugin to change title case of selected Zotero items into `UPPERCASE`, `lowercase`, `Sentence case` or `Title Case`.
 
-Install by downloading the [initial release v1.0.0](https://github.com/ManuelaRunge/Zotitle/releases/tag/v1.0.0)
+Install by downloading the latest release from [GitHub releases](https://github.com/ManuelaRunge/Zotitle/releases).
+
+Version 1.0.1 adds bootstrapped plugin support for Zotero 10. Zotero 6 support is kept through the legacy RDF/XUL files.
 
 This is my first Zotero plugin. 
 If you find any issues or have any comments or suggestions, please let me know!
@@ -18,6 +20,7 @@ If you find any issues or have any comments or suggestions, please let me know!
 
 
 **Change log and credits:**
+- September 2026: updated plugin metadata and menu registration for Zotero 10 compatibility.
 - August 2023: initial release for basic functionality
 - August 2023: found this awesome zotero-plugin [eschnett/zotero-citationcounts](https://github.com/eschnett/zotero-citationcounts/tree/master), that I used as a template and learning guide.
 - July 2023: found [dcartertod/zotero-plugins](https://github.com/dcartertod/zotero-plugins/tree/main) and borrowed temporarily `make-xpi.ps1`.

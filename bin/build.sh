@@ -1,9 +1,9 @@
 #!/bin/sh
 
-version='1.0.0'
+version='1.0.1'
 
-rm -f zotitle-${version}.xpi
-zip -r zotitle-${version}.xpi chrome/* defaults/* chrome.manifest install.rdf
+rm -f Zotitle-${version}.xpi
+zip -r Zotitle-${version}.xpi bootstrap.js manifest.json updates.json chrome/* defaults/* chrome.manifest install.rdf update.rdf
 
 # To release a new version:
 # - increase version number in all files (not just here)
