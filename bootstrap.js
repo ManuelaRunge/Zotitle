@@ -166,7 +166,9 @@ var Zotitle = {
                     return token;
                 }
 
-                if (minorWords.has(token) && index !== firstWord && index !== lastWord) {
+                const followsColon = index > 0 && /:\s*$/.test(tokens[index - 1]);
+
+                if (minorWords.has(token) && index !== firstWord && index !== lastWord && !followsColon) {
                     return token;
                 }
 
