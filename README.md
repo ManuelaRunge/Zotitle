@@ -5,9 +5,9 @@ Very simple Zotero plugin to change the titles of selected Zotero items into `UP
 
 Install by downloading the latest release from [GitHub releases](https://github.com/ManuelaRunge/Zotitle/releases).
 
-Version 1.1.1 targets Zotero 10 and removes the old Zotero 6 RDF/XUL plugin code.
+Version 1.1.2 targets Zotero 10 and improves headline-style capitalization.
 
-`Headline-style capitalization` keeps common minor words lowercase unless they are the first or last word. Minor words currently include articles (`a`, `an`, `the`), coordinating conjunctions (`and`, `but`, `or`, `nor`, `for`, `so`, `yet`), and short prepositions (`as`, `at`, `by`, `for`, `in`, `of`, `on`, `per`, `to`, `up`, `via`).
+`Headline-style capitalization` keeps common minor words lowercase unless they are the first word, last word, or the first word after a colon. Minor words currently include articles (`a`, `an`, `the`), coordinating conjunctions (`and`, `but`, `or`, `nor`, `for`, `so`, `yet`), and short prepositions (`as`, `at`, `by`, `for`, `from`, `in`, `of`, `on`, `per`, `to`, `up`, `via`, `with`). Abbreviations such as `WHO`, `WHO's`, `R&D`, `HIV`, and `COVID-19` are preserved.
 
 This is my first Zotero plugin. 
 If you find any issues or have any comments or suggestions, please let me know!
@@ -22,6 +22,7 @@ If you find any issues or have any comments or suggestions, please let me know!
 
 
 **Change log and credits:**
+- September 2026: v1.1.2 improved headline-style capitalization for `from`, `with`, subtitle words after colons, and abbreviations.
 - September 2026: v1.1.1 removed legacy Zotero 6 RDF/XUL plugin code.
 - September 2026: v1.1.1 added headline-style capitalization with lowercase minor words.
 - September 2026: v1.1.0 updated plugin metadata and menu registration for Zotero 10 compatibility.

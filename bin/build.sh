@@ -1,6 +1,6 @@
 #!/bin/sh
 
-version='1.1.1'
+version='1.1.2'
 
 rm -f Zotitle-${version}.xpi
 zip -r Zotitle-${version}.xpi bootstrap.js manifest.json updates.json
