@@ -1,11 +1,13 @@
 Zotitle
 =================
 
-Very simple zotero plugin to change title case of selected Zotero items into `UPPERCASE`, `lowercase`, `Sentence case` or `Title Case`.
+Very simple Zotero plugin to change the titles of selected Zotero items into `UPPERCASE`, `lowercase`, `Sentence case`, `Title Case`, or `Headline-style capitalization`.
 
 Install by downloading the latest release from [GitHub releases](https://github.com/ManuelaRunge/Zotitle/releases).
 
 Version 1.0.1 adds bootstrapped plugin support for Zotero 10. Zotero 6 support is kept through the legacy RDF/XUL files.
+
+`Headline-style capitalization` keeps common minor words lowercase unless they are the first or last word. Minor words currently include articles (`a`, `an`, `the`), coordinating conjunctions (`and`, `but`, `or`, `nor`, `for`, `so`, `yet`), and short prepositions (`as`, `at`, `by`, `for`, `in`, `of`, `on`, `per`, `to`, `up`, `via`).
 
 This is my first Zotero plugin. 
 If you find any issues or have any comments or suggestions, please let me know!
@@ -15,11 +17,12 @@ If you find any issues or have any comments or suggestions, please let me know!
 - add preferences to:
    - allow user-defined exceptions to upper and lower case changes
    - enable to keep country names capitalized per default
-   - enable to keep propositions lowercase per default
+   - allow user-defined minor words for headline-style capitalization
 - add new functionality to italicize user-defined scientific terms
 
 
 **Change log and credits:**
+- September 2026: added headline-style capitalization with lowercase minor words.
 - September 2026: updated plugin metadata and menu registration for Zotero 10 compatibility.
 - August 2023: initial release for basic functionality
 - August 2023: found this awesome zotero-plugin [eschnett/zotero-citationcounts](https://github.com/eschnett/zotero-citationcounts/tree/master), that I used as a template and learning guide.

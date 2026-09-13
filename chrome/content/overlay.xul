@@ -31,6 +31,10 @@
                     label="&zotitle-menu-title-label;"
                     oncommand="Zotero.ChangeTitleCase.updateSelectedItems('to_title')"/>
                 <menuitem
+                    id="zotero-itemmenu-zotitle-headline"
+                    label="&zotitle-menu-headline-label;"
+                    oncommand="Zotero.ChangeTitleCase.updateSelectedItems('to_headline')"/>
+                <menuitem
                     id="zotero-itemmenu-zotitle-sentence"
                     label="&zotitle-menu-sentence-label;"
                     oncommand="Zotero.ChangeTitleCase.updateSelectedItems('to_sentence')"/>

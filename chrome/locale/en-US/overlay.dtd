@@ -2,4 +2,5 @@
 <!ENTITY zotitle-menu-upper-label "UPPERCASE">
 <!ENTITY zotitle-menu-lower-label "lowercase">
 <!ENTITY zotitle-menu-title-label "Title Case">
+<!ENTITY zotitle-menu-headline-label "Headline-style capitalization">
 <!ENTITY zotitle-menu-sentence-label "Sentence case">

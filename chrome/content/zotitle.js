@@ -21,6 +21,34 @@ function changeTitleCase(item, operation) {
 		}
 		return newString;
 	}
+
+	String.prototype.toHeadlineStyle = function(){
+		var minorWords = new Set([
+			'a', 'an', 'the',
+			'and', 'but', 'or', 'nor', 'for', 'so', 'yet',
+			'as', 'at', 'by', 'in', 'of', 'on', 'per', 'to', 'up', 'via'
+		]);
+		var tokens = this.toLowerCase().match(/[A-Za-z0-9]+|[^A-Za-z0-9]+/g) || [];
+		var wordIndexes = tokens
+			.map((token, index) => /^[A-Za-z0-9]+$/.test(token) ? index : null)
+			.filter(index => index !== null);
+		var firstWord = wordIndexes[0];
+		var lastWord = wordIndexes[wordIndexes.length - 1];
+
+		return tokens
+			.map(function(token, index) {
+				if (!/^[A-Za-z0-9]+$/.test(token)) {
+					return token;
+				}
+
+				if (minorWords.has(token) && index !== firstWord && index !== lastWord) {
+					return token;
+				}
+
+				return token.charAt(0).toUpperCase() + token.slice(1);
+			})
+			.join('');
+	}
 		
 	// see https://www.zotero.org/support/dev/client_coding/javascript_api#managing_citations_and_bibliographies
 	var items = Zotero.getActiveZoteroPane().getSelectedItems();
@@ -48,6 +76,10 @@ function changeTitleCase(item, operation) {
 	if (operation == 'to_title') {
 		let title = item.getField('title');
 		item.setField('title', title.toTitleCase());
+	}
+	if (operation == 'to_headline') {
+		let title = item.getField('title');
+		item.setField('title', title.toHeadlineStyle());
 	}
 	if (operation == 'to_sentence') {
 		let title = item.getField('title');

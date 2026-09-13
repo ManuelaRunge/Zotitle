@@ -5,6 +5,7 @@ var Zotitle = {
         { id: "upper", label: "UPPERCASE", operation: "to_upper" },
         { id: "lower", label: "lowercase", operation: "to_lower" },
         { id: "title", label: "Title Case", operation: "to_title" },
+        { id: "headline", label: "Headline-style capitalization", operation: "to_headline" },
         { id: "sentence", label: "Sentence case", operation: "to_sentence" }
     ],
 
@@ -129,6 +130,10 @@ var Zotitle = {
             return this.toTitleCase(title);
         }
 
+        if (operation === "to_headline") {
+            return this.toHeadlineStyle(title);
+        }
+
         if (operation === "to_sentence") {
             return this.toSentenceCase(title);
         }
@@ -140,6 +145,34 @@ var Zotitle = {
         return title
             .toLowerCase()
             .replace(/(^|[\s_-])(\S)/g, (match, separator, character) => separator + character.toUpperCase());
+    },
+
+    toHeadlineStyle(title) {
+        const minorWords = new Set([
+            "a", "an", "the",
+            "and", "but", "or", "nor", "for", "so", "yet",
+            "as", "at", "by", "in", "of", "on", "per", "to", "up", "via"
+        ]);
+        const tokens = title.toLowerCase().match(/[A-Za-z0-9]+|[^A-Za-z0-9]+/g) || [];
+        const wordIndexes = tokens
+            .map((token, index) => (/^[A-Za-z0-9]+$/.test(token) ? index : null))
+            .filter(index => index !== null);
+        const firstWord = wordIndexes[0];
+        const lastWord = wordIndexes[wordIndexes.length - 1];
+
+        return tokens
+            .map((token, index) => {
+                if (!/^[A-Za-z0-9]+$/.test(token)) {
+                    return token;
+                }
+
+                if (minorWords.has(token) && index !== firstWord && index !== lastWord) {
+                    return token;
+                }
+
+                return token.charAt(0).toUpperCase() + token.slice(1);
+            })
+            .join("");
     },
 
     toSentenceCase(title) {
