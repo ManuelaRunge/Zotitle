@@ -5,7 +5,7 @@ Very simple Zotero plugin to change the titles of selected Zotero items into `UP
 
 Install by downloading the latest release from [GitHub releases](https://github.com/ManuelaRunge/Zotitle/releases).
 
-Version 1.0.1 adds bootstrapped plugin support for Zotero 10. Zotero 6 support is kept through the legacy RDF/XUL files.
+Version 1.1.1 supports Zotero 10 through a bootstrapped plugin entry point.
 
 `Headline-style capitalization` keeps common minor words lowercase unless they are the first or last word. Minor words currently include articles (`a`, `an`, `the`), coordinating conjunctions (`and`, `but`, `or`, `nor`, `for`, `so`, `yet`), and short prepositions (`as`, `at`, `by`, `for`, `in`, `of`, `on`, `per`, `to`, `up`, `via`).
 
@@ -22,6 +22,7 @@ If you find any issues or have any comments or suggestions, please let me know!
 
 
 **Change log and credits:**
+- September 2026: removed legacy Zotero 6 RDF/XUL plugin code.
 - September 2026: added headline-style capitalization with lowercase minor words.
 - September 2026: updated plugin metadata and menu registration for Zotero 10 compatibility.
 - August 2023: initial release for basic functionality
