@@ -151,7 +151,7 @@ var Zotitle = {
         const minorWords = new Set([
             "a", "an", "the",
             "and", "but", "or", "nor", "for", "so", "yet",
-            "as", "at", "by", "in", "of", "on", "per", "to", "up", "via"
+            "as", "at", "by", "from", "in", "of", "on", "per", "to", "up", "via"
         ]);
         const tokens = title.toLowerCase().match(/[A-Za-z0-9]+|[^A-Za-z0-9]+/g) || [];
         const wordIndexes = tokens
