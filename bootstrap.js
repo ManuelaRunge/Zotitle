@@ -6,7 +6,21 @@ var Zotitle = {
         { id: "lower", label: "lowercase", operation: "to_lower" },
         { id: "title", label: "Title Case", operation: "to_title" },
         { id: "headline", label: "Headline-style capitalization", operation: "to_headline" },
-        { id: "sentence", label: "Sentence case", operation: "to_sentence" }
+        { id: "sentence", label: "Sentence case", operation: "to_sentence" },
+        { id: "scientific", label: "Italicize scientific terms", operation: "italicize_scientific" }
+    ],
+
+    scientificTerms: [
+        "Anopheles gambiae",
+        "Anopheles stephensi",
+        "Anopheles",
+        "Aedes aegypti",
+        "Aedes",
+        "Plasmodium falciparum",
+        "Plasmodium vivax",
+        "Plasmodium malariae",
+        "Plasmodium ovale",
+        "Plasmodium"
     ],
 
     startup({ id }) {
@@ -138,6 +152,10 @@ var Zotitle = {
             return this.toSentenceCase(title);
         }
 
+        if (operation === "italicize_scientific") {
+            return this.italicizeScientificTerms(title);
+        }
+
         return title;
     },
 
@@ -181,6 +199,71 @@ var Zotitle = {
         }
 
         return title.charAt(0).toUpperCase() + title.slice(1).toLowerCase();
+    },
+
+    italicizeScientificTerms(title) {
+        const protectedSegments = this.splitItalicSegments(title);
+        const terms = this.getScientificTerms();
+
+        return protectedSegments
+            .map(segment => {
+                if (segment.isItalic) {
+                    return segment.text;
+                }
+
+                return this.italicizeTermsInText(segment.text, terms);
+            })
+            .join("");
+    },
+
+    splitItalicSegments(title) {
+        const segments = [];
+        const italicPattern = /<i\b[^>]*>[\s\S]*?<\/i>/gi;
+        let lastIndex = 0;
+        let match;
+
+        while ((match = italicPattern.exec(title)) !== null) {
+            if (match.index > lastIndex) {
+                segments.push({ text: title.slice(lastIndex, match.index), isItalic: false });
+            }
+
+            segments.push({ text: match[0], isItalic: true });
+            lastIndex = italicPattern.lastIndex;
+        }
+
+        if (lastIndex < title.length) {
+            segments.push({ text: title.slice(lastIndex), isItalic: false });
+        }
+
+        return segments;
+    },
+
+    getScientificTerms() {
+        return [...new Set(this.scientificTerms.map(term => term.trim()).filter(Boolean))]
+            .sort((a, b) => b.length - a.length);
+    },
+
+    italicizeTermsInText(text, terms) {
+        let result = text;
+
+        for (let term of terms) {
+            const pattern = new RegExp(`(^|[^A-Za-z0-9])(${this.escapeRegExp(term)})(?=$|[^A-Za-z0-9])`, "gi");
+            result = this.splitItalicSegments(result)
+                .map(segment => {
+                    if (segment.isItalic) {
+                        return segment.text;
+                    }
+
+                    return segment.text.replace(pattern, "$1<i>$2</i>");
+                })
+                .join("");
+        }
+
+        return result;
+    },
+
+    escapeRegExp(value) {
+        return value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     }
 };
 
