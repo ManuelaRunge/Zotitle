@@ -153,28 +153,44 @@ var Zotitle = {
             "and", "but", "or", "nor", "for", "so", "yet",
             "as", "at", "by", "from", "in", "of", "on", "per", "to", "up", "via", "with"
         ]);
-        const tokens = title.toLowerCase().match(/[A-Za-z0-9]+|[^A-Za-z0-9]+/g) || [];
+        const tokens = title.match(/[A-Za-z0-9]+(?:'[sS])?|[^A-Za-z0-9]+/g) || [];
         const wordIndexes = tokens
-            .map((token, index) => (/^[A-Za-z0-9]+$/.test(token) ? index : null))
+            .map((token, index) => (this.isHeadlineWord(token) ? index : null))
             .filter(index => index !== null);
         const firstWord = wordIndexes[0];
         const lastWord = wordIndexes[wordIndexes.length - 1];
 
         return tokens
             .map((token, index) => {
-                if (!/^[A-Za-z0-9]+$/.test(token)) {
+                if (!this.isHeadlineWord(token)) {
                     return token;
                 }
 
+                if (this.isProtectedAbbreviation(token)) {
+                    return token;
+                }
+
+                const lowerToken = token.toLowerCase();
                 const followsColon = index > 0 && /:\s*$/.test(tokens[index - 1]);
 
-                if (minorWords.has(token) && index !== firstWord && index !== lastWord && !followsColon) {
-                    return token;
+                if (minorWords.has(lowerToken) && index !== firstWord && index !== lastWord && !followsColon) {
+                    return lowerToken;
                 }
 
-                return token.charAt(0).toUpperCase() + token.slice(1);
+                return lowerToken.charAt(0).toUpperCase() + lowerToken.slice(1);
             })
             .join("");
+    },
+
+    isHeadlineWord(token) {
+        return /[A-Za-z0-9]/.test(token);
+    },
+
+    isProtectedAbbreviation(token) {
+        const base = token.replace(/'[sS]$/, "");
+
+        return /[A-Z]/.test(base) &&
+            (/^[A-Z0-9]{2,}$/.test(base) || /^[A-Z0-9]{2,}s$/.test(base));
     },
 
     toSentenceCase(title) {
